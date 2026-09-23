@@ -1,19 +1,24 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 interface Props { src: ImageMetadata; alt: string; eager?: boolean; class?: string; sizes?: string; }
 const { src, alt, eager = false, class: className, sizes = '(max-width: 700px) calc((100vw - 58px) / 2), (max-width: 1050px) 45vw, 400px' } = Astro.props;
-// Keep retina options without downloading the original full-size photograph.
 const widths = [...new Set([360, 640, 960, 1280, 1600].map(width => Math.min(width, src.width)))];
-const options = { src, width: Math.min(960, src.width), widths };
-const [avif, webp] = await Promise.all([
-  getImage({ ...options, format: 'avif', quality: 50 }),
-  getImage({ ...options, format: 'webp', quality: 78 }),
-]);
-// Supporting browsers use the actual layout width for lazy images.
-const responsiveSizes = eager ? sizes : `auto, ${sizes}`;
 ---
-<picture class="optimized-photo">
-  <source type="image/avif" srcset={avif.srcSet.attribute} sizes={responsiveSizes}/>
-  <img src={webp.src} srcset={webp.srcSet.attribute} sizes={responsiveSizes} width={src.width} height={src.height} alt={alt} class={className} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'}/>
-</picture>
+<Image data-original-src={src.src} src={src} alt={alt} class={className} width={Math.min(960, src.width)} widths={widths} sizes={sizes} format="webp" quality={78} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'}/>
+
+<script>
+  // Recover if an optimized image cannot load or decode in the visitor’s browser.
+  const recover = (image: EventTarget | null) => {
+    if (!(image instanceof HTMLImageElement) || !image.dataset.originalSrc) return;
+    const original = image.dataset.originalSrc;
+    delete image.dataset.originalSrc;
+    image.removeAttribute('srcset');
+    image.removeAttribute('sizes');
+    image.src = original;
+  };
+  document.addEventListener('error', event => recover(event.target), true);
+  document.querySelectorAll<HTMLImageElement>('img[data-original-src]').forEach(image => {
+    if (image.complete && image.naturalWidth === 0) recover(image);
+  });
+</script>

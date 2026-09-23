@@ -14,10 +14,11 @@ relatedNotes:
   - how-i-cook-my-steaks
   - crispy-salmon
 relatedDishes:
+  - "18093557726194781"
   - "17893713633664905"
   - "18121862992680182"
-heroImage: ../../assets/recipes/imported/pan-seared-scallops-with-dill-basil-mashed-potatoes-17893713633664905-1.jpg
-heroAlt: Pan-seared scallops with dill-basil mashed potatoes
+heroImage: ../../assets/recipes/imported/grilled-octopus-roasted-potatoes-and-salad-18093557726194781-1.jpg
+heroAlt: Grilled octopus with roasted potatoes and salad
 ---
 I wasn’t born with magical cooking powers. I just love cooking, and I keep trying things.
 

@@ -60,5 +60,3 @@ body.cook-mode .recipe-tools a,body.cook-mode #print-recipe{display:none}
 .dish-kitchen-notes { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line, #d9d2c5); }
 .dish-kitchen-notes h2 { margin-bottom: 1rem; }
 .dish-note-links { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; margin-top: 1.5rem; }
-
-.optimized-photo{display:contents}
