@@ -1,9 +1,10 @@
 ---
+import Arrow from '../../components/Arrow.astro';
 import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Photo from '../../components/Photo.astro';
 import DishCard from '../../components/DishCard.astro';
-import { publicDishes, href, dateLabel, type Dish } from '../../lib';
+import { publicDishes, href, dateLabel, withoutEmoji, type Dish } from '../../lib';
 import { siteConfig } from '../../config';
 export async function getStaticPaths() { return (await publicDishes()).map(dish => ({ params: { slug: dish.data.slug }, props: { dish } })); }
 interface Props { dish: Dish; }
@@ -14,13 +15,13 @@ const structured = d.hasRecipe ? { '@context': 'https://schema.org', '@type': 'R
 ---
 <Layout title={d.title} description={d.description || d.title} image={d.heroImage.src} article>
   {structured && <script slot="head" type="application/ld+json" set:html={JSON.stringify(structured).replace(/</g,'\\u003c')}/>}
-  <article class="wrap" data-recipe-id={d.slug}><a class="breadcrumb" href={href('recipes/')}>← Back to the collection</a><header class="dish-heading"><p class="eyebrow">{d.category} / {d.hasRecipe ? 'Recipe' : 'From my kitchen'}</p><h1>{d.title}</h1><time datetime={d.date.toISOString()}>{dateLabel(d.date)}</time>{d.description && <p class="description">{d.description}</p>}</header>
-  {d.hasRecipe && <><div class="recipe-tools"><a class="button" href="#recipe">Jump to recipe ↓</a><button id="cook-mode" type="button" aria-pressed="false">Enter cook mode</button><button id="print-recipe" type="button">Print recipe</button></div><dl class="recipe-metadata">{[['Prep',`${d.prepTime} min`],['Cook',`${d.cookTime} min`],['Total',`${d.totalTime} min`],['Serves',d.servings], ...(d.difficulty ? [['Difficulty',d.difficulty]] : []), ...(d.cuisine ? [['Cuisine',d.cuisine]] : [])].map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl></>}
+  <article class="wrap" data-recipe-id={d.slug}><a class="breadcrumb" href={href('recipes/')}><Arrow direction="left"/> Back to the collection</a><header class="dish-heading"><p class="eyebrow">{d.category} / {d.hasRecipe ? 'Recipe' : 'From my kitchen'}</p><h1>{d.title}</h1><time datetime={d.date.toISOString()}>{dateLabel(d.date)}</time>{d.description && <p class="description">{d.description}</p>}</header>
+  {d.hasRecipe && <><div class="recipe-tools"><a class="button" href="#recipe">Jump to recipe <Arrow direction="down"/></a><button id="cook-mode" type="button" aria-pressed="false">Enter cook mode</button><button id="print-recipe" type="button">Print recipe</button></div><dl class="recipe-metadata">{[['Prep',`${d.prepTime} min`],['Cook',`${d.cookTime} min`],['Total',`${d.totalTime} min`],['Serves',d.servings], ...(d.difficulty ? [['Difficulty',d.difficulty]] : []), ...(d.cuisine ? [['Cuisine',d.cuisine]] : [])].map(([label,value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl></>}
   <figure class="detail-image"><Photo src={d.heroImage} alt={d.heroAlt} eager sizes="(max-width: 700px) 100vw, 1050px"/></figure>
-  <div class="detail-body">{d.story && <p class="prose">{d.story}</p>}<div class="prose"><Content/></div>{d.originalCaption && <div><p class="eyebrow caption-label">From the original kitchen notes</p><p class="original-caption">{d.originalCaption}</p></div>}<div class="tag-list">{d.tags.map(tag => <a href={href(`recipes/?q=${encodeURIComponent(tag)}`)}>#{tag}</a>)}</div><a class="text-link" href={d.instagramUrl || siteConfig.instagramUrl}>{d.instagramUrl ? 'See this post on Instagram' : 'More from my kitchen on Instagram'} ↗</a></div>
+  <div class="detail-body">{d.story && <p class="prose">{d.story}</p>}<div class="prose"><Content/></div>{d.originalCaption && <div><p class="eyebrow caption-label">From the original kitchen notes</p><p class="original-caption">{withoutEmoji(d.originalCaption)}</p></div>}<div class="tag-list">{d.tags.map(tag => <a href={href(`recipes/?q=${encodeURIComponent(tag)}`)}>#{tag}</a>)}</div><a class="text-link" href={d.instagramUrl || siteConfig.instagramUrl}>{d.instagramUrl ? 'See this post on Instagram' : 'More from my kitchen on Instagram'} <Arrow direction="up-right"/></a></div>
   {d.hasRecipe && <div id="recipe" class="recipe-content"><section><h2>Ingredients</h2><ul class="check-list">{d.ingredients.map((ingredient,index) => <li><label><input type="checkbox" data-check={`ingredient-${index}`}/><span>{ingredient}</span></label></li>)}</ul><button class="text-link" id="clear-checks" type="button">Reset checkmarks</button></section><section><h2>Let’s make it</h2><ol class="check-list">{d.instructions.map((step,index) => <li><label><input type="checkbox" data-check={`step-${index}`} aria-label={`Mark step ${index+1} complete`}/><span class="step-number" aria-hidden="true">{String(index+1).padStart(2,'0')}</span><span>{step}</span></label></li>)}</ol>{d.notes && <div class="recipe-notes"><h3>A few notes</h3><p class="prose">{d.notes}</p></div>}</section></div>}
   {d.gallery.length > 0 && <section class="gallery" aria-label="More photographs of this dish">{d.gallery.map((image,index) => <Photo src={image} alt={`${d.title}, photograph ${index+2}`}/>)}</section>}
-  <section class="related-section"><div class="section-heading"><h2>Another <em>helping</em></h2><a class="text-link" href={href('recipes/')}>Back to the collection ↗</a></div><div class="related-grid">{related.map(dish => <DishCard dish={dish}/>)}</div></section>
+  <section class="related-section"><div class="section-heading"><h2>Another <em>helping</em></h2><a class="text-link" href={href('recipes/')}>Back to the collection <Arrow direction="up-right"/></a></div><div class="related-grid">{related.map(dish => <DishCard dish={dish}/>)}</div></section>
   </article>
 </Layout>
 <script>

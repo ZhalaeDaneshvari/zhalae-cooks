@@ -30,7 +30,7 @@ If Astro telemetry is restricted in your environment, prefix commands with `ASTR
 - **Homepage:** introductory copy is in `src/config.ts`; editorial copy and photo selection are in `src/pages/index.astro`.
 - **About:** edit `src/data/about.json`. The page now tells the supplied story of learning to cook from her dad, with three family photographs in `src/assets/about/`. The childhood close-up uses CSS, preserving the complete photograph. Edit `src/pages/about.astro` to change the album layout.
 - **Public starting selection:** `src/data/featured-imports.json` is an explicit list of Instagram import IDs permitted to appear while their source files remain drafts. All 61 current food entries are now explicitly published with `draft: false`. Archived and unrelated entries remain drafts. The original 18-entry starting selection remains available for reference. The four homepage spotlights are chosen in `src/data/spotlight-imports.json`. Remove an ID to hide it again. This override never publishes entries marked `needsReview` or `archivedOnInstagram`. Publishing by `draft: false` is an explicit author decision and can include archived entries.
-- **Journal:** contains two kitchen notes based on the owner’s account of her spices and steak methods, plus an unpublished starter draft.
+- **Journal:** contains nine kitchen notes based on the owner’s account of her spices, salt, steak, chicken thighs and potatoes, plus an unpublished starter draft.
 
 ## Add a dish or recipe
 
@@ -81,7 +81,7 @@ Copy `JOURNAL_TEMPLATE.md` to `src/content/journal/your-note.md`. Set title, uni
 
 ### Journal
 
-`title`, `slug`, `description`, `date` are required. `draft` defaults to true; `tags` defaults to an empty list. `heroImage` and `heroAlt` are optional as a pair. The Markdown body contains the article.
+`title`, `slug`, `description`, `date` are required. `draft` defaults to true; `tags` defaults to an empty list. `heroImage` and `heroAlt` are optional as a pair. `relatedNotes` lists other journal slugs and renders linked follow-up notes; missing targets fail the build. `relatedDishes` lists public Instagram import IDs and adds linked dish cards. Optional `dishCollection: steak` renders a responsive collage of all published steak photographs. The Markdown body contains the article.
 
 ## Photos and privacy
 

@@ -18,6 +18,6 @@ const recipes = defineCollection({
 });
 const journal = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/journal' }),
-  schema: ({ image }) => z.object({ title: z.string(), slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), description: z.string(), date: z.coerce.date(), heroImage: image().optional(), heroAlt: z.string().default(''), draft: z.boolean().default(true), tags: z.array(z.string()).default([]) }),
+  schema: ({ image }) => z.object({ title: z.string(), slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), description: z.string(), date: z.coerce.date(), heroImage: image().optional(), heroAlt: z.string().default(''), dishCollection: z.enum(['steak']).optional(), relatedNotes: z.array(z.string()).default([]), relatedDishes: z.array(z.string()).default([]), draft: z.boolean().default(true), tags: z.array(z.string()).default([]) }),
 });
 export const collections = { recipes, journal };

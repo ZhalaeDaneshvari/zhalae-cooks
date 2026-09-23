@@ -2,15 +2,29 @@
 title: How I cook my steaks
 slug: how-i-cook-my-steaks
 description: Cast iron inside, the grill whenever I can, and a lot of love for rosemary, garlic, and butter.
-heroImage: ../../assets/recipes/imported/steak-frite-w-chimichurri-sauce-18097288897864616-1.jpg
-heroAlt: Steak frites with chimichurri sauce
+heroImage: ../../assets/recipes/imported/steak-frites-18074097710292743-1.jpg
+heroAlt: Three plates of sliced steak and fries
 date: 2026-09-22
+dishCollection: steak
+relatedNotes: [a-little-more-salt, the-spices-i-always-reach-for]
 draft: false
 tags: [steak, grilling, cast iron, steak frites]
 ---
 I love steak, obviously. I’ve spent a lot of time getting better at different ways of cooking it, and I have opinions now.
 
 If I’m cooking indoors, cast iron is my favorite. But the grill is really the best to me. I’ve grown to love it.
+
+## My go-to seasoning
+
+Coarse salt, pepper, and garlic powder. That’s my usual starting point for steak. Simple, but it does a lot.
+
+When I first started cooking, I used Montreal steak seasoning. I still think you can use it, but now I like playing with those individual seasonings myself. And salt really matters here. Enough to bring out the flavor, without going overboard.
+
+## If I’m making steak tacos
+
+Skirt steak is my first choice for tacos, although I’ve had them with ribeye and New York strip too, and those are good. I like a marinade with lime, onions, and jalapeños. Paprika and garlic can go in there too.
+
+For a marinade, I love grating the garlic. To me, it gives so much more flavor than powder. Garlic powder is still my everyday steak go-to; grated garlic is what I reach for when I want that fresh garlic flavor.
 
 ## Start with the thickness
 

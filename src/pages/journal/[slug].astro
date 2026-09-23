@@ -1,11 +1,30 @@
 ---
+import Arrow from '../../components/Arrow.astro';
 import { render, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Photo from '../../components/Photo.astro';
+import DishCard from '../../components/DishCard.astro';
 import Newsletter from '../../components/Newsletter.astro';
-import { publicJournal, href, dateLabel } from '../../lib';
+import { publicJournal, publicDishes, dishUrl, href, dateLabel } from '../../lib';
 export async function getStaticPaths() { return (await publicJournal()).map(post => ({ params: { slug: post.data.slug }, props: { post } })); }
 interface Props { post: CollectionEntry<'journal'>; }
 const { post } = Astro.props; const { Content } = await render(post);
+const dishes = await publicDishes();
+const linkedDishes = post.data.relatedDishes.map(id => { const dish = dishes.find(d => d.data.importId === id); if (!dish) throw new Error(`Missing related dish: ${id}`); return dish; });
+const steaks = post.data.dishCollection === 'steak' ? (await publicDishes()).filter(d => /steak|ribeye|porterhouse|\bnys\b/i.test(d.data.title)) : [];
+const photographs = steaks.flatMap(dish => [dish.data.heroImage,...dish.data.gallery].map((image,index) => ({ dish, image, alt: index ? `${dish.data.title}, photograph ${index+1}` : dish.data.heroAlt })));
+const notes = await publicJournal();
+const related = post.data.relatedNotes.map(slug => { const note = notes.find(n => n.data.slug === slug); if (!note) throw new Error(`Missing related journal note: ${slug}`); return note; });
 ---
-<Layout title={post.data.title} description={post.data.description} image={post.data.heroImage?.src} article><article class="wrap"><a class="breadcrumb" href={href('journal/')}>← Back to the journal</a><header class="dish-heading"><p class="eyebrow">Kitchen journal</p><h1>{post.data.title}</h1><time datetime={post.data.date.toISOString()}>{dateLabel(post.data.date)}</time><p class="description">{post.data.description}</p></header>{post.data.heroImage && <div class="detail-image"><Photo src={post.data.heroImage} alt={post.data.heroAlt} eager/></div>}<div class="detail-body prose"><Content/></div><Newsletter/></article></Layout>
+<Layout title={post.data.title} description={post.data.description} image={post.data.heroImage?.src} article>
+  <article class="wrap">
+    <a class="breadcrumb" href={href('journal/')}><Arrow direction="left"/> Back to the journal</a>
+    <header class="dish-heading"><p class="eyebrow">Kitchen journal</p><h1>{post.data.title}</h1><time datetime={post.data.date.toISOString()}>{dateLabel(post.data.date)}</time><p class="description">{post.data.description}</p></header>
+    {post.data.heroImage && <div class="detail-image journal-hero"><Photo src={post.data.heroImage} alt={post.data.heroAlt} eager sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1110px) calc(100vw - 60px), 1050px"/></div>}
+    <div class="detail-body prose"><Content/></div>
+    {photographs.length > 0 && <section class="steak-album" aria-labelledby="steak-album-title"><div class="section-heading"><div><p class="eyebrow">A bit of a steak obsession</p><h2 id="steak-album-title">Many steaks.<br/><em>Very happy people.</em></h2></div><p class="muted">From the grill, the cast iron, and my table.<br/>{photographs.length} photographs, and counting.</p></div><div class="steak-collage">{photographs.map(({dish,image,alt},index) => <figure style={`--tilt:${index%3===0?-2:index%3===1?1.5:-.7}deg`}><a href={dishUrl(dish)}><Photo src={image} alt={alt} sizes="(max-width: 700px) 50vw, 33vw"/><figcaption>{dish.data.title} <Arrow/></figcaption></a></figure>)}</div></section>}
+    {related.length > 0 && <section class="related-notes"><p class="eyebrow">Keep cooking</p>{related.map(note => <a class="journal-row" href={href(`journal/${note.data.slug}/`)}><h3>{note.data.title}</h3><Arrow/></a>)}</section>}
+    {linkedDishes.length > 0 && <section class="note-dishes"><div class="section-heading"><h2>From <em>my table</em></h2></div><div class="note-dishes-grid">{linkedDishes.map(dish => <DishCard dish={dish}/>)}</div></section>}
+    <Newsletter/>
+  </article>
+</Layout>

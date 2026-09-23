@@ -1,5 +1,6 @@
 ---
+import Arrow from '../components/Arrow.astro';
 import Layout from '../layouts/Layout.astro';
 import { href } from '../lib';
 ---
-<Layout title="Page not found"><div class="wrap empty-state"><p class="eyebrow">404 / An empty plate</p><h1>Something’s <em>missing.</em></h1><p>That page isn’t here, but there’s plenty in the kitchen.</p><a class="button" href={href('recipes/')}>Explore the collection ↗</a></div></Layout>
+<Layout title="Page not found"><div class="wrap empty-state"><p class="eyebrow">404 / An empty plate</p><h1>Something’s <em>missing.</em></h1><p>That page isn’t here, but there’s plenty in the kitchen.</p><a class="button" href={href('recipes/')}>Explore the collection <Arrow direction="up-right"/></a></div></Layout>

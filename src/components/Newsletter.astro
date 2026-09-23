@@ -1,9 +1,10 @@
 ---
+import Arrow from './Arrow.astro';
 import { siteConfig } from '../config';
 ---
 <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
   <div><p class="eyebrow">A little something to take with you</p><h2 id="newsletter-title">Notes from<br/><em>my Kitchen</em></h2></div>
   <div class="newsletter-copy"><p>Kitchen notes, meals I loved, and recipes worth making again (when I remember to measure). A little more from my kitchen, on Substack.</p>
-    {siteConfig.substackUrl ? <a class="button" href={siteConfig.substackUrl}>Subscribe on Substack <span aria-hidden="true">↗</span></a> : <p class="coming-soon">Coming soon on Substack.<br/>Until then, <a class="text-link" href={siteConfig.instagramUrl}>follow along on Instagram ↗</a></p>}
+    {siteConfig.substackUrl ? <a class="button" href={siteConfig.substackUrl}>Subscribe on Substack <span aria-hidden="true"><Arrow direction="up-right"/></span></a> : <p class="coming-soon">Coming soon on Substack.<br/>Until then, <a class="text-link" href={siteConfig.instagramUrl}>follow along on Instagram <Arrow direction="up-right"/></a></p>}
   </div>
 </section>

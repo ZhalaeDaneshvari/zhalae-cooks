@@ -11,3 +11,6 @@ export async function publicDishes() {
   return entries.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 export async function publicJournal() { return (await getCollection('journal', ({ data }) => !data.draft)).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf()); }
+
+// Keep imported captions intact in Markdown, but render plain text without emoji.
+export const withoutEmoji = (value: string) => value.replace(/[\p{Extended_Pictographic}\p{Regional_Indicator}\p{Emoji_Modifier}\u200d\ufe0f]/gu, '').replace(/ {2,}/g, ' ').trim();
