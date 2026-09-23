@@ -11,8 +11,8 @@ importSource: instagram
 importId: "17880903261453111"
 tags: []
 category: Dinner
-favorite: true
-featured: true
+favorite: false
+featured: false
 archivedOnInstagram: false
 hasRecipe: false
 draft: true
