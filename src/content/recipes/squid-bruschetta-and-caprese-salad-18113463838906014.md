@@ -10,11 +10,11 @@ originalCaption: Squid bruschetta, and caprese salad 👩‍🍳07/03/2026
 importSource: instagram
 importId: "18113463838906014"
 tags: []
-category: Other
+category: Lunch
 favorite: false
 featured: false
 archivedOnInstagram: false
 hasRecipe: false
-draft: true
-needsReview: true
+draft: false
+needsReview: false
 ---

@@ -10,11 +10,11 @@ originalCaption: Homemade tzatziki 👩‍🍳 often
 importSource: instagram
 importId: "18081859655632058"
 tags: []
-category: Other
+category: Sides
 favorite: false
 featured: false
 archivedOnInstagram: false
 hasRecipe: false
-draft: true
-needsReview: true
+draft: false
+needsReview: false
 ---

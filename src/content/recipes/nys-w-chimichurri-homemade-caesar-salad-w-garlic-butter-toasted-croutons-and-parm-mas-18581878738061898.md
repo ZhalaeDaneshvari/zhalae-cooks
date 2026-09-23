@@ -13,11 +13,11 @@ originalCaption: NYS w/ chimichurri, homemade Caesar salad w/ garlic butter
 importSource: instagram
 importId: "18581878738061898"
 tags: []
-category: Other
+category: Dinner
 favorite: false
 featured: false
 archivedOnInstagram: false
 hasRecipe: false
-draft: true
-needsReview: true
+draft: false
+needsReview: false
 ---

@@ -15,6 +15,6 @@ favorite: false
 featured: false
 archivedOnInstagram: false
 hasRecipe: false
-draft: true
-needsReview: true
+draft: false
+needsReview: false
 ---
