@@ -2,7 +2,7 @@
 title: It might just need more salt
 slug: a-little-more-salt
 description: Something I learned from my dad, and from tasting my own food over and over.
-date: 2026-09-22
+date: 2026-09-09
 draft: false
 tags:
   - salt

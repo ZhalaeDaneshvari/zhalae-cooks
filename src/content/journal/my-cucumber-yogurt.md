@@ -3,7 +3,7 @@ title: The cucumber yogurt I keep calling tzatziki
 slug: my-cucumber-yogurt
 description: Fresh dill, Persian cucumbers, dried mint, and a little olive oil
   on top. Happy hour material.
-date: 2026-09-22
+date: 2026-09-20
 draft: false
 tags:
   - yogurt

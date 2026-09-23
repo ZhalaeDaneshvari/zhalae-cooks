@@ -4,7 +4,7 @@ slug: how-i-cook-my-steaks
 description: Cast iron inside, the grill whenever I can, and a lot of love for rosemary, garlic, and butter.
 heroImage: ../../assets/recipes/imported/steak-frites-18074097710292743-1.jpg
 heroAlt: Three plates of sliced steak and fries
-date: 2026-09-22
+date: 2026-09-03
 dishCollection: steak
 relatedNotes: [a-little-more-salt, the-spices-i-always-reach-for]
 draft: false

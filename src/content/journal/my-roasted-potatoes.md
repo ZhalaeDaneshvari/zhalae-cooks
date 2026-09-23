@@ -3,7 +3,7 @@ title: My dad’s potatoes, my way
 slug: my-roasted-potatoes
 description: A little thinner, plenty of grated garlic, and the best partner for
   chicken thighs.
-date: 2026-09-22
+date: 2026-09-15
 draft: false
 tags:
   - potatoes

@@ -55,3 +55,8 @@ body.cook-mode .recipe-tools a,body.cook-mode #print-recipe{display:none}
 @media(max-width:700px){.steak-collage{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 14px;padding:12px 4px}.steak-collage figure{padding:5px 5px 10px}.steak-collage figure:nth-child(3n+2){margin-top:0}.steak-collage figure:nth-child(even){margin-top:22px}.steak-collage figcaption{font-size:1.1rem;padding:10px 3px 0}.steak-album{padding-bottom:40px}.related-notes{margin-bottom:40px}}
 .note-dishes{max-width:900px;margin:0 auto 65px}.note-dishes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}.note-dishes-grid>.dish-card:only-child{max-width:450px;grid-column:1/-1}.note-dishes-grid .dish-card h3{font-size:1.8rem}
 @media(max-width:700px){.note-dishes{margin-bottom:40px}.note-dishes-grid{gap:18px}.note-dishes-grid .dish-card h3{font-size:1.5rem}}
+
+.journal-shortcuts { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.dish-kitchen-notes { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line, #d9d2c5); }
+.dish-kitchen-notes h2 { margin-bottom: 1rem; }
+.dish-note-links { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; margin-top: 1.5rem; }

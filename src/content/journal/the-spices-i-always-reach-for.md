@@ -3,7 +3,7 @@ title: The spices I always reach for
 slug: the-spices-i-always-reach-for
 description: Paprika, salt, garlic powder, pepper, cayenne, cumin, and turmeric.
   A pretty good picture of how I cook.
-date: 2026-09-22
+date: 2026-09-06
 relatedNotes:
   - a-little-more-salt
   - crispy-chicken-thighs

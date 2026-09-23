@@ -32,7 +32,7 @@ const path = Astro.url.pathname;
   <header class="site-header wrap">
     <a class="wordmark" href={href()} aria-label={`${siteConfig.siteName} home`}>{siteConfig.siteName}<span aria-hidden="true">.</span></a>
     <nav aria-label="Main navigation">{['Recipes', 'Journal', 'About'].map(label => <a href={href(`${label.toLowerCase()}/`)} aria-current={path.includes(`/${label.toLowerCase()}`) ? 'page' : undefined}>{label}</a>)}</nav>
-    <div class="header-social"><a href={siteConfig.instagramUrl}>Instagram <span aria-hidden="true"><Arrow direction="up-right"/></span></a><a class="subscribe-link" href={siteConfig.substackUrl || href('#newsletter')}>{siteConfig.substackUrl ? 'Subscribe' : 'Kitchen notes'} <span aria-hidden="true"><Arrow direction="up-right"/></span></a></div>
+    <div class="header-social"><a href={siteConfig.instagramUrl}>Instagram <span aria-hidden="true"><Arrow direction="up-right"/></span></a><a class="subscribe-link" href={href('journal/')}>Kitchen notes <span aria-hidden="true"><Arrow direction="up-right"/></span></a></div>
   </header>
   <main id="main"><slot/></main>
   <footer class="site-footer wrap"><div><a class="wordmark" href={href()}>{siteConfig.siteName}<span>.</span></a><p>A personal food journal.<br/>Made with a little curiosity, and a lot of appetite.</p></div><div class="footer-links"><a href={href('recipes/')}>The collection</a><a href={href('journal/')}>Journal</a><a href={href('about/')}>About</a><a href={siteConfig.instagramUrl}>Instagram <Arrow direction="up-right"/></a></div><p class="copyright">© {new Date().getFullYear()} {siteConfig.authorName}<br/>From my kitchen, with love.<br/><span class="coding-note">I coded this website, too.<br/>Another thing I love.</span></p></footer>

@@ -2,7 +2,7 @@
 title: The garlic yogurt everyone asks for
 slug: my-garlic-yogurt
 description: A fan favorite, and honestly one of the simplest things I make.
-date: 2026-09-22
+date: 2026-09-18
 draft: false
 tags:
   - yogurt

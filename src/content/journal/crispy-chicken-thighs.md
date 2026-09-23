@@ -2,7 +2,7 @@
 title: The chicken thighs I keep making
 slug: crispy-chicken-thighs
 description: Paprika, grated garlic, a little heat, and skin that gets its time in the pan.
-date: 2026-09-22
+date: 2026-09-12
 draft: false
 tags:
   - chicken
