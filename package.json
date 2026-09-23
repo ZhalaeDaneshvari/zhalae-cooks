@@ -1,0 +1,32 @@
+{
+  "name": "zhalae-cooks",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check",
+    "test": "node --test scripts/*.test.mjs",
+    "import-instagram": "node scripts/import-instagram.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "@astrojs/sitemap": "^3.5.0",
+    "@astrojs/rss": "^4.0.0",
+    "@tailwindcss/vite": "^4.1.0",
+    "tailwindcss": "^4.1.0",
+    "@fontsource/dm-sans": "^5.2.0",
+    "@fontsource/cormorant-garamond": "^5.2.0",
+    "sharp": "^0.34.0",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  }
+}

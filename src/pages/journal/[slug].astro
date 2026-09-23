@@ -1,0 +1,11 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { publicJournal, href, dateLabel } from '../../lib';
+export async function getStaticPaths() { return (await publicJournal()).map(post => ({ params: { slug: post.data.slug }, props: { post } })); }
+interface Props { post: CollectionEntry<'journal'>; }
+const { post } = Astro.props; const { Content } = await render(post);
+---
+<Layout title={post.data.title} description={post.data.description} image={post.data.heroImage?.src} article><article class="wrap"><a class="breadcrumb" href={href('journal/')}>← Back to the journal</a><header class="dish-heading"><p class="eyebrow">Kitchen journal</p><h1>{post.data.title}</h1><time datetime={post.data.date.toISOString()}>{dateLabel(post.data.date)}</time><p class="description">{post.data.description}</p></header>{post.data.heroImage && <div class="detail-image"><Photo src={post.data.heroImage} alt={post.data.heroAlt} eager/></div>}<div class="detail-body prose"><Content/></div><Newsletter/></article></Layout>

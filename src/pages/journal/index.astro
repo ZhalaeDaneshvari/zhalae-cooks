@@ -1,0 +1,7 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { publicJournal, href, dateLabel } from '../../lib';
+const posts = await publicJournal();
+---
+<Layout title="The kitchen journal" description="Experiments, discoveries, and stories from the kitchen."><div class="wrap"><header class="page-heading"><p class="eyebrow">Notes, discoveries & little obsessions</p><h1>The kitchen <em>journal</em></h1><p>A place for everything that happens between the recipes.</p></header><section class="journal-index">{posts.length ? posts.map(post => <a class="journal-row" href={href(`journal/${post.data.slug}/`)}><time datetime={post.data.date.toISOString()}>{dateLabel(post.data.date)}</time><h3>{post.data.title}</h3><span aria-hidden="true">↗</span></a>) : <div class="empty-state"><p class="eyebrow">A fresh page</p><h2>The first notes<br/>are <em>still simmering.</em></h2><p>Cooking experiments, favorite ingredients, and stories behind the dishes. There’s plenty to photograph while the words catch up.</p><a class="text-link" href={href('recipes/')}>See what’s been cooking ↗</a></div>}</section><Newsletter/></div></Layout>

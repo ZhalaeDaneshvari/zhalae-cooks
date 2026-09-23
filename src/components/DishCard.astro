@@ -1,0 +1,11 @@
+---
+import Photo from './Photo.astro';
+import { dishUrl, type Dish } from '../lib';
+interface Props { dish: Dish; index?: number; }
+const { dish, index = 0 } = Astro.props;
+---
+<article class="dish-card" style={`--tilt:${index % 2 ? '2' : '-2'}deg`}>
+  <a class="photo-link" href={dishUrl(dish)} tabindex="-1" aria-hidden="true"><Photo src={dish.data.heroImage} alt="" /></a>
+  <div class="card-meta"><span>{dish.data.category}</span><span>{dish.data.hasRecipe ? 'Recipe' : 'From my kitchen'}</span></div>
+  <h3><a href={dishUrl(dish)}>{dish.data.title}</a></h3>
+</article>

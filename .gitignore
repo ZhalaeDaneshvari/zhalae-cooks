@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env*
+!.env.example
+instagram-import/
+instagram-*/
+your_instagram_activity/
+media/
+*.log
+.qa/
